@@ -19,3 +19,11 @@
     flex-flow: row wrap;
     justify-content: space-between;
 }
+
+.img-book {
+    transition: transform 0.4s
+}
+
+.img-book:hover {
+    transform: scale(1.03)
+}
