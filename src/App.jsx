@@ -1,14 +1,14 @@
 import React from 'react'
-import Welcome from './pages/Welcome'
 import './App.css'
 import './input.css'
+import Routes from './routes'
 
 
 function App
 () {
   return (
     <>
-      <Welcome />
+      <Routes />
     </>
   )
 }
