@@ -28,7 +28,7 @@ function Welcome() {
 			</div>
 
 			<div id="our-products">
-				<h1 className="text-3xl font-bold">Mengapa harus Baca disini?</h1>
+				<h1 className="text-3xl font-bold text-center">Mengapa harus Baca disini?</h1>
 				<div id="card-products">
 					<div
 						className="card w-96 bg-base-100 text-primary-content"
@@ -186,7 +186,7 @@ function Welcome() {
 							</div>
 						</div>
 						<div className="card-body">
-							<h2 className="card-title">Ikhwal Febriyo Pratama</h2>
+							<h2 className="card-title">Ikhwal Febriyo P</h2>
 							<p>FS23</p>
 						</div>
 					</div>
