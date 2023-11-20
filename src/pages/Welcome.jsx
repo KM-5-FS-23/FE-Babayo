@@ -13,7 +13,7 @@ function Welcome() {
 				<div className="hero-content flex-col lg:flex-row-reverse">
 					<img
 						src="https://i.imgur.com/bUdybHS.png"
-						className="max-w-sm"
+						className="max-w-xs lg:max-w-xl"
 					/>
 					<div>
 						<h1 className="text-4xl font-bold">
@@ -28,7 +28,9 @@ function Welcome() {
 			</div>
 
 			<div id="our-products">
-				<h1 className="text-3xl font-bold text-center">Mengapa harus Baca disini?</h1>
+				<h1 className="text-3xl font-bold text-center">
+					Mengapa harus Baca disini?
+				</h1>
 				<div id="card-products">
 					<div
 						className="card w-96 bg-base-100 text-primary-content"
@@ -143,74 +145,58 @@ function Welcome() {
 				className="bg-accent"
 			>
 				<h1 className="text-3xl font-bold text-center">Tim Kami</h1>
-				<div id="team-cards">
-					<div
-						className="card card-side bg-primary shadow-xl"
-						style={{
-							display: 'flex',
-							flexDirection: 'row',
-							justifyContent: 'space-around',
-							alignItems: 'center',
-							padding: '0 12px',
-						}}
-					>
-						<div className="avatar">
-							<div className="w-20 rounded">
-								<img
-									src="https://i.imgur.com/SqHE1Ct.jpg"
-									alt="Fahki Rohandi"
-								/>
+				<div
+					id="team-cards"
+					className="flex flex-wrap"
+				>
+					<div className="card card-side bg-primary shadow-xl">
+						<div className="flex items-center justify-around px-4">
+							<div className="avatar">
+								<div className="w-20 rounded">
+									<img
+										src="https://i.imgur.com/SqHE1Ct.jpg"
+										alt="Fahki Rohandi"
+									/>
+								</div>
 							</div>
-						</div>
-						<div className="card-body">
-							<h2 className="card-title">Fahki Rohandi</h2>
-							<p>FS23</p>
+							<div className="card-body">
+								<h2 className="card-title">Fahki Rohandi</h2>
+								<p>FS23</p>
+							</div>
 						</div>
 					</div>
-					<div
-						className="card card-side bg-primary shadow-xl"
-						style={{
-							display: 'flex',
-							flexDirection: 'row',
-							justifyContent: 'space-around',
-							alignItems: 'center',
-							padding: '0 12px',
-						}}
-					>
-						<div className="avatar">
-							<div className="w-20 rounded">
-								<img
-									src="https://i.imgur.com/E8thYwt.jpg"
-									alt="Ikhwal Febriyo Pratama"
-								/>
+
+					<div className="card card-side bg-primary shadow-xl">
+						<div className="flex items-center justify-around px-4">
+							<div className="avatar">
+								<div className="w-20 rounded">
+									<img
+										src="https://i.imgur.com/E8thYwt.jpg"
+										alt="Ikhwal Febriyo"
+									/>
+								</div>
 							</div>
-						</div>
-						<div className="card-body">
-							<h2 className="card-title">Ikhwal Febriyo P</h2>
-							<p>FS23</p>
+							<div className="card-body">
+								<h2 className="card-title">Ikhwal Febriyo</h2>
+								<p>FS23</p>
+							</div>
 						</div>
 					</div>
-					<div
-						className="card card-side bg-primary shadow-xl"
-						style={{
-							display: 'flex',
-							flexDirection: 'row',
-							justifyContent: 'space-around',
-							alignItems: 'center',
-							padding: '0 12px',
-						}}
-					>
-						<div className="avatar">
-							<div className="w-20 rounded">
-								<img
-									src="https://i.imgur.com/8zefAeI.jpg"
-									alt="Willy Nurgian"
-								/>
+
+					<div className="card card-side bg-primary shadow-xl">
+						<div className="flex items-center justify-around px-4">
+							<div className="avatar">
+								<div className="w-20 rounded">
+									<img
+										src="https://i.imgur.com/8zefAeI.jpg"
+										alt="Willy Nurgian"
+									/>
+								</div>
 							</div>
-						</div>
-						<div className="card-body">
-							<h2 className="card-title">Willy Nurgian</h2>
-							<p>FS23</p>
+							<div className="card-body">
+								<h2 className="card-title">Willy Nurgian</h2>
+								<p>FS23</p>
+							</div>
 						</div>
 					</div>
 				</div>

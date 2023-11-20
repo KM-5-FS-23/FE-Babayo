@@ -61,3 +61,21 @@
     gap: 24px;
     margin: 0 auto;
 }
+
+#login-content .hero {
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+#login-content .hero .label-required {
+    color: crimson;
+}
+
+#register-content .hero .label-required {
+    color: crimson;
+}
+
+#register-content .hero {
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
