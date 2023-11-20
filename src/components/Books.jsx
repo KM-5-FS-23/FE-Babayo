@@ -8,7 +8,7 @@ function Books() {
 				className="card card-compact bg-base-100"
 				style={{ width: '184px' }}
 			>
-				<figure>
+				<figure className='img-book'>
 					<a href="">
 						<img
 							src="https://i.imgur.com/gzVaE2g.png"
@@ -27,7 +27,7 @@ function Books() {
 				className="card card-compact bg-base-100"
 				style={{ width: '184px' }}
 			>
-				<figure>
+				<figure className='img-book'>
 					<a href="">
 						<img
 							src="https://i.imgur.com/gzVaE2g.png"
@@ -46,7 +46,7 @@ function Books() {
 				className="card card-compact bg-base-100"
 				style={{ width: '184px' }}
 			>
-				<figure>
+				<figure className='img-book'>
 					<a href="">
 						<img
 							src="https://i.imgur.com/gzVaE2g.png"
@@ -65,7 +65,7 @@ function Books() {
 				className="card card-compact bg-base-100"
 				style={{ width: '184px' }}
 			>
-				<figure>
+				<figure className='img-book'>
 					<a href="">
 						<img
 							src="https://i.imgur.com/gzVaE2g.png"
@@ -84,7 +84,7 @@ function Books() {
 				className="card card-compact bg-base-100"
 				style={{ width: '184px' }}
 			>
-				<figure>
+				<figure className='img-book'>
 					<a href="">
 						<img
 							src="https://i.imgur.com/gzVaE2g.png"
