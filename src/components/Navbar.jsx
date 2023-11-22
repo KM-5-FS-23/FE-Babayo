@@ -25,9 +25,6 @@ function Navbar() {
 					<li>
 						<a>Favorit</a>
 					</li>
-					<li>
-						<a>Workshop</a>
-					</li>
 				</ul>
 			</div>
 			<div className="flex-none mr-3">
