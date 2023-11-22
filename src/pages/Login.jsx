@@ -60,7 +60,12 @@ function Login() {
 								</label>
 							</div>
 							<div className="form-control mt-6">
-								<button className="btn btn-secondary">Masuk</button>
+								<Link
+									to="/homepage"
+									className="btn btn-secondary"
+								>
+									Masuk
+								</Link>
 								<br />
 								<Link
 									to="/register"

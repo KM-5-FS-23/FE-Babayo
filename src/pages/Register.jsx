@@ -74,6 +74,7 @@ function Register() {
 											<input
 												type="checkbox"
 												className="checkbox checkbox-sm checkbox-secondary mr-3"
+												required
 											/>
 											<span className="label-text text-justify">
 												Saya setuju dengan syarat & ketentuan dan kebijakan

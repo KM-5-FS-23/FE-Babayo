@@ -5,6 +5,15 @@
     color: #fff;
 }
 
+#card-products {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
 .footer {
     display: flex;
     flex-direction: column;
