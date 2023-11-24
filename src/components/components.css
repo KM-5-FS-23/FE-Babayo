@@ -22,11 +22,20 @@
     color: #fff;
 }
 
+.footer-2 {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0 0 0;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
 #card-books {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    color: black;
 }
 
 .img-book {
@@ -35,4 +44,12 @@
 
 .img-book:hover {
     transform: scale(1.03)
+}
+
+#cardBooks {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    color: black;
 }

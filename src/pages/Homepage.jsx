@@ -109,7 +109,7 @@ function Homepage() {
 							❮
 						</a>
 						<a
-							href="#slide3"
+							href="#slide1"
 							className="btn btn-circle btn-secondary"
 						>
 							❯
