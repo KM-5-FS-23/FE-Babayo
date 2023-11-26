@@ -94,7 +94,7 @@ function ReadDailyPage() {
 						Selesai Membaca
 					</Link>
 					<Link
-						to="/detail-books"
+						to="/discuss"
 						className="btn btn-primary"
 					>
 						Lanjut Diskusi

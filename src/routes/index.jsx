@@ -11,6 +11,7 @@ import DetailBooksPage from '../pages/DetailBooksPage';
 import ReadBookPage from '../pages/ReadBookPage';
 import DailysPage from '../pages/DailysPage';
 import ReadDailyPage from '../pages/ReadDailyPage';
+import DiscussPage from '../pages/DiscussPage';
 
 const Routes = () => {
 	return (
@@ -52,6 +53,10 @@ const Routes = () => {
 				<Route
 					path="/read-daily"
 					component={ReadDailyPage}
+				/>
+				<Route
+					path="/discuss"
+					component={DiscussPage}
 				/>
 				{/* Tambahkan rute lainnya sesuai kebutuhan */}
 			</Switch>
