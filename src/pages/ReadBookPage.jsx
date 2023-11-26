@@ -7,16 +7,17 @@ function ReadBookPage() {
 	return (
 		<div>
 			<Navbar />
+
 			<div
 				className="flex-col h-screen pt-20"
 				id="read-content"
 			>
 				<div className="flex justify-between">
-					<div className="flex-col">
+					<div className="flex-col font-semibold">
 						<h1>Laskar Pelangi</h1>
 						<p>2005</p>
 					</div>
-					<div className="flex-col text-right">
+					<div className="flex-col text-right font-semibold">
 						<h1>Waktu Membaca</h1>
 						<p>00:00:00</p>
 					</div>
@@ -33,6 +34,7 @@ function ReadBookPage() {
 						Selesai Membaca
 					</Link>
 				</div>
+
 				<Footer2 />
 			</div>
 		</div>
