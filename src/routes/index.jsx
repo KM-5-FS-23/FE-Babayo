@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Homepage from '../pages/Homepage';
 import BooksPage from '../pages/BooksPage';
+import DetailBooksPage from '../pages/DetailBooksPage';
 
 const Routes = () => {
 	return (
@@ -32,6 +33,10 @@ const Routes = () => {
 				<Route
 					path="/books"
 					component={BooksPage}
+				/>
+				<Route
+					path="/detail-books"
+					component={DetailBooksPage}
 				/>
 				{/* Tambahkan rute lainnya sesuai kebutuhan */}
 			</Switch>

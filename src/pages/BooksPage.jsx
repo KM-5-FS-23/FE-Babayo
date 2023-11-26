@@ -68,7 +68,6 @@ function BooksPage() {
 								style={{ color: 'black' }}
 							/>
 							<BookCollections />
-							<BookCollections />
 
 							<div className="join">
 								<button className="join-item btn btn-secondary">«</button>
