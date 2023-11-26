@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from '../components/navbar';
-import BookCollections from '../components/BookCollections';
 import Footer2 from '../components/Footer2';
+import DailyCollections from '../components/DailyCollections';
 
-function BooksPage() {
+function DailysPage() {
 	return (
 		<div>
 			<Navbar />
@@ -31,22 +31,16 @@ function BooksPage() {
 						>
 							<li>
 								<details open>
-									<summary>Koleksi Buku</summary>
+									<summary>Bacaan Harian</summary>
 									<ul>
 										<li>
 											<a>Semua</a>
 										</li>
 										<li>
-											<a>Fiksi</a>
+											<a>Artikel</a>
 										</li>
 										<li>
-											<a>Pendidikan</a>
-										</li>
-										<li>
-											<a>Sejarah</a>
-										</li>
-										<li>
-											<a>Teknologi</a>
+											<a>Cerpen</a>
 										</li>
 									</ul>
 								</details>
@@ -61,13 +55,19 @@ function BooksPage() {
 				>
 					<div className="hero bg-base-100">
 						<div className="hero-content w-full flex-col px-10 lg:flex-col align-center">
-							<input
-								type="text"
-								placeholder="Cari Buku"
-								className="input input-bordered w-full"
-								style={{ color: 'black' }}
-							/>
-							<BookCollections />
+							<div
+								className="flex w-full"
+								style={{ gap: '24px' }}
+							>
+								<input
+									type="text"
+									placeholder="Cari Bacaan"
+									className="input input-bordered w-full"
+									style={{ color: 'black' }}
+								/>
+								<button className="btn btn-secondary">Buat Topik Baru</button>
+							</div>
+							<DailyCollections />
 
 							<div className="join">
 								<button className="join-item btn btn-secondary">«</button>
@@ -84,4 +84,4 @@ function BooksPage() {
 	);
 }
 
-export default BooksPage;
+export default DailysPage;

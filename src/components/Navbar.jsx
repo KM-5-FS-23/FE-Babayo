@@ -14,13 +14,13 @@ function Navbar() {
 				</NavLink>
 				<ul className="menu menu-horizontal px-1">
 					<li>
-						<a>Beranda</a>
+						<Link to="/homepage">Beranda</Link>
 					</li>
 					<li>
-						<a>Bacaan Harian</a>
+						<Link to='/dailys'>Bacaan Harian</Link>
 					</li>
 					<li>
-						<a>Koleksi Buku</a>
+						<Link to="/books">Koleksi Buku</Link>
 					</li>
 					<li>
 						<a>Favorit</a>

@@ -54,3 +54,11 @@
     gap: 4em;
     color: black;
 }
+
+#dailyCards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    color: black;
+}
