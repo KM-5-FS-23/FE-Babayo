@@ -2,7 +2,7 @@ import React from 'react';
 import './pages.css';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link, NavLink } from 'react-router-dom/cjs/react-router-dom';
 
 function DetailBooksPage() {
 	return (
@@ -34,15 +34,21 @@ function DetailBooksPage() {
 					className="hero bg-base-100"
 					id="detail-books"
 				>
-					<div className="hero-content flex-col lg:flex-row">
+					<div
+						className="hero-content flex-col lg:flex-row"
+						style={{ gap: '48px' }}
+					>
 						<div className="flex-col">
 							<img
 								src="https://i.imgur.com/gzVaE2g.png"
 								className="card card-compact w-72"
 							/>
-							<button className="btn btn-secondary w-full my-2">
+							<NavLink
+								to="read-book"
+								className="btn btn-secondary w-full my-2"
+							>
 								Baca Buku
-							</button>
+							</NavLink>
 							<button className="btn btn-primary w-full my-2">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
