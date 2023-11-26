@@ -8,6 +8,7 @@ import Register from '../pages/Register';
 import Homepage from '../pages/Homepage';
 import BooksPage from '../pages/BooksPage';
 import DetailBooksPage from '../pages/DetailBooksPage';
+import ReadBookPage from '../pages/ReadBookPage';
 
 const Routes = () => {
 	return (
@@ -37,6 +38,10 @@ const Routes = () => {
 				<Route
 					path="/detail-books"
 					component={DetailBooksPage}
+				/>
+				<Route
+					path="/read-book"
+					component={ReadBookPage}
 				/>
 				{/* Tambahkan rute lainnya sesuai kebutuhan */}
 			</Switch>
