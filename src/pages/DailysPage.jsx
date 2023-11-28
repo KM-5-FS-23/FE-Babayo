@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
 import DailyCollections from '../components/DailyCollections';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 function DailysPage() {
 	return (
@@ -65,7 +66,12 @@ function DailysPage() {
 									className="input input-bordered w-full"
 									style={{ color: 'black' }}
 								/>
-								<button className="btn btn-secondary">Buat Topik Baru</button>
+								<Link
+									to="create-daily"
+									className="btn btn-secondary"
+								>
+									Buat Topik Baru
+								</Link>
 							</div>
 							<DailyCollections />
 
