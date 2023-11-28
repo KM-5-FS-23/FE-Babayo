@@ -1,10 +1,11 @@
 import React from 'react';
 import Navbar from '../components/navbar';
-import Footer2 from '../components/Footer2';
 import FavoritBookCollections from '../components/FavoritBookCollections';
+import Footer2 from '../components/Footer2';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import FavoritDailyCollections from '../components/FavoritDailyCollections';
 
-function FavoritBooks() {
+function FavoritDailys() {
 	return (
 		<div>
 			<Navbar />
@@ -60,7 +61,7 @@ function FavoritBooks() {
 								style={{ color: 'black' }}
 							/>
 
-							<FavoritBookCollections />
+							<FavoritDailyCollections />
 
 							<div className="join">
 								<button className="join-item btn btn-secondary">«</button>
@@ -77,4 +78,4 @@ function FavoritBooks() {
 	);
 }
 
-export default FavoritBooks;
+export default FavoritDailys;
