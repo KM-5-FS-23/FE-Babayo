@@ -23,7 +23,7 @@ function Navbar() {
 						<Link to="/books">Koleksi Buku</Link>
 					</li>
 					<li>
-						<a>Favorit</a>
+						<Link to='/favorite-books'>Favorit</Link>
 					</li>
 				</ul>
 			</div>
