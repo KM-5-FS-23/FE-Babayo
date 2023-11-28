@@ -13,6 +13,7 @@ import DailysPage from '../pages/DailysPage';
 import ReadDailyPage from '../pages/ReadDailyPage';
 import DiscussPage from '../pages/DiscussPage';
 import CreateDailyPage from '../pages/CreateDailyPage';
+import FavoritBooks from '../pages/FavoritBooks';
 
 const Routes = () => {
 	return (
@@ -62,6 +63,10 @@ const Routes = () => {
 				<Route
 					path="/discuss"
 					component={DiscussPage}
+				/>
+				<Route
+					path="/favorite-books"
+					component={FavoritBooks}
 				/>
 				{/* Tambahkan rute lainnya sesuai kebutuhan */}
 			</Switch>
