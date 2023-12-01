@@ -23,7 +23,10 @@ export const login = (userData) => async (dispatch) => {
 		const userId = response.data.userId;
 		localStorage.setItem('userId', userId);
 		
-        const role = response.data.role;
+		const username = response.data.username;
+		localStorage.setItem('username', username);
+
+    const role = response.data.role;
 		localStorage.setItem('role', role);
 
 		dispatch({ type: LOGIN_SUCCESS, payload: response.data });
