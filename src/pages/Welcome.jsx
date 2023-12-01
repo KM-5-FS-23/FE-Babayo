@@ -4,6 +4,7 @@ import Navbar from '../components/navbar';
 import Footer from '../components/Footer';
 import Books from '../components/Books';
 import Products from '../components/Products';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 function Welcome() {
 	return (
@@ -23,7 +24,7 @@ function Welcome() {
 						<p className="py-6">
 							Nikmati rangkaian bacaan harian yang penuh wawasan setiap pagi
 						</p>
-						<button className="btn btn-secondary">Mulai Membaca</button>
+						<Link to="/login" className="btn btn-secondary">Mulai Membaca</Link>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,11 @@
-// src/routes/index.jsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	Redirect,
+} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Welcome from '../pages/Welcome';
 import Login from '../pages/Login';
@@ -15,6 +20,19 @@ import DiscussPage from '../pages/DiscussPage';
 import CreateDailyPage from '../pages/CreateDailyPage';
 import FavoritBooks from '../pages/FavoritBooks';
 import FavoritDailys from '../pages/FavoritDailys';
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+	return (
+		<Route
+			{...rest}
+			render={(props) =>
+				isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+			}
+		/>
+	);
+};
 
 const Routes = () => {
 	return (
@@ -33,43 +51,43 @@ const Routes = () => {
 					path="/register"
 					component={Register}
 				/>
-				<Route
+				<PrivateRoute
 					path="/homepage"
 					component={Homepage}
 				/>
-				<Route
+				<PrivateRoute
 					path="/books"
 					component={BooksPage}
 				/>
-				<Route
-					path="/detail-books"
+				<PrivateRoute
+					path="/detail-books/:bookId"
 					component={DetailBooksPage}
 				/>
-				<Route
+				<PrivateRoute
 					path="/read-book"
 					component={ReadBookPage}
 				/>
-				<Route
+				<PrivateRoute
 					path="/dailys"
 					component={DailysPage}
 				/>
-				<Route
+				<PrivateRoute
 					path="/read-daily"
 					component={ReadDailyPage}
 				/>
-				<Route
+				<PrivateRoute
 					path="/create-daily"
 					component={CreateDailyPage}
 				/>
-				<Route
+				<PrivateRoute
 					path="/discuss"
 					component={DiscussPage}
 				/>
-				<Route
+				<PrivateRoute
 					path="/favorite-books"
 					component={FavoritBooks}
 				/>
-				<Route
+				<PrivateRoute
 					path="/favorite-dailys"
 					component={FavoritDailys}
 				/>

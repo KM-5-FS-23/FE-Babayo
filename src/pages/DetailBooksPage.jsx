@@ -4,98 +4,128 @@ import { getBook } from '../redux/actions/detailBookActions';
 import './pages.css';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
-import { Link, NavLink, useParams } from 'react-router-dom/cjs/react-router-dom';
+import {
+	Link,
+	NavLink,
+	useParams,
+} from 'react-router-dom/cjs/react-router-dom';
 
 function DetailBooksPage() {
-  const { bookId } = useParams();
-  const dispatch = useDispatch();
-  const { book, error } = useSelector((state) => state.detailBook);
+	const { bookId } = useParams();
+	const dispatch = useDispatch();
+	const { book, error } = useSelector((state) => state.detailBook);
 
-  useEffect(() => {
-    dispatch(getBook(2));
-  }, [dispatch, bookId]);
+	useEffect(() => {
+		if (bookId) {
+			dispatch(getBook(bookId));
+		}
+	}, [dispatch, bookId]);
 
-  return (
-    <div>
-      <Navbar />
-      <div className="flex-col h-screen pt-20">
-        <div className="hero-content justify-start">
-          <Link to="books" className="btn btn-secondary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </Link>
-        </div>
-        <div className="hero bg-base-100" id="detail-books">
-          <div className="hero-content flex-col lg:flex-row" style={{ gap: '48px' }}>
-            <div className="flex-col">
-              <img src={book.gambar} className="card card-compact w-72" alt={book.judul} />
-              <NavLink to="read-book" className="btn btn-secondary w-full my-2">
-                Baca Buku
-              </NavLink>
-              <button className="btn btn-primary w-full my-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-                Tambah Favorit
-              </button>
-            </div>
-            <div className="flex-col w-full">
-              <h1 className="text-3xl font-bold">{book.judul}</h1>
-              <table className="my-3">
-                <tr>
-                  <td className="w-32">Bahasa</td>
-                  <td className="w-4">:</td>
-                  <td>{book.bahasa}</td>
-                </tr>
-                <tr>
-                  <td className="w-32">Penulis</td>
-                  <td className="w-4">:</td>
-                  <td>{book.penulis}</td>
-                </tr>
-                <tr>
-                  <td className="w-32">Tahun Terbit</td>
-                  <td className="w-4">:</td>
-                  <td>{book.tahun_terbit}</td>
-                </tr>
-                <tr>
-                  <td className="w-32">Kategori</td>
-                  <td className="w-4">:</td>
-                  <td>{book.kategori}</td>
-                </tr>
-              </table>
+	if (!bookId || !book) {
+		return <div>Loading...</div>;
+	}
 
-              <h1 className="text-3xl font-bold">Sinopsis</h1>
-              <p className="my-3 text-justify">{book.sinopsis}</p>
-            </div>
-          </div>
-        </div>
-        <Footer2 />
-      </div>
-    </div>
-  );
+	if (error) {
+		return <div>Error: {error}</div>;
+	}
+
+	return (
+		<div>
+			<Navbar />
+			<div className="flex-col h-screen pt-20">
+				<div className="hero-content justify-start">
+					<Link
+						to="books"
+						className="btn btn-secondary"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							className="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="2"
+								d="M6 18L18 6M6 6l12 12"
+							/>
+						</svg>
+					</Link>
+				</div>
+				<div
+					className="hero bg-base-100"
+					id="detail-books"
+				>
+					<div
+						className="hero-content flex-col lg:flex-row"
+						style={{ gap: '48px' }}
+					>
+						<div className="flex-col">
+							<img
+								src={book.gambar}
+								className="card card-compact w-72"
+								alt={book.judul}
+							/>
+							<NavLink
+								to="read-book"
+								className="btn btn-secondary w-full my-2"
+							>
+								Baca Buku
+							</NavLink>
+							<button className="btn btn-primary w-full my-2">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									className="h-6 w-6"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth="2"
+										d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+									/>
+								</svg>
+								Tambah Favorit
+							</button>
+						</div>
+						<div className="flex-col w-full">
+							<h1 className="text-3xl font-bold">{book.judul}</h1>
+							<table className="my-3">
+								<tr>
+									<td className="w-32">Bahasa</td>
+									<td className="w-4">:</td>
+									<td>{book.bahasa}</td>
+								</tr>
+								<tr>
+									<td className="w-32">Penulis</td>
+									<td className="w-4">:</td>
+									<td>{book.penulis}</td>
+								</tr>
+								<tr>
+									<td className="w-32">Tahun Terbit</td>
+									<td className="w-4">:</td>
+									<td>{book.tahun_terbit}</td>
+								</tr>
+								<tr>
+									<td className="w-32">Kategori</td>
+									<td className="w-4">:</td>
+									<td>{book.kategori}</td>
+								</tr>
+							</table>
+
+							<h1 className="text-3xl font-bold">Sinopsis</h1>
+							<p className="my-3 text-justify">{book.sinopsis}</p>
+						</div>
+					</div>
+				</div>
+				<Footer2 />
+			</div>
+		</div>
+	);
 }
 
 export default DetailBooksPage;

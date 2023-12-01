@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
 import DailyCollections from '../components/DailyCollections';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import Navbar from '../components/navbar';
 
 function DailysPage() {
 	return (
