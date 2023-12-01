@@ -9,7 +9,7 @@ function BookCollections() {
 				style={{ width: '152px' }}
 			>
 				<figure className="img-book">
-					<Link to="/detail-books">
+					<Link to="/detail-books/2">
 						<img
 							src="https://i.imgur.com/gzVaE2g.png"
 							alt="Laskar Pelangi"
