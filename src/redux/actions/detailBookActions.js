@@ -1,12 +1,11 @@
 import axios from 'axios';
 import {
-	GET_BOOK_SUCCESS,
-	GET_BOOK_FAILURE,
+  GET_BOOK_SUCCESS,
+  GET_BOOK_FAILURE,
 } from '../constant/detailBookConstants';
 
 const API_BASE_URL = 'https://fs23-babayoo.cyclic.app/books';
 
-// Action untuk mendapatkan daftar buku
 export const getBook = () => async (dispatch) => {
 	try {
 		const token = localStorage.getItem('token');
@@ -30,7 +29,6 @@ export const getBook = () => async (dispatch) => {
 	}
 };
 
-// Action untuk mendapatkan detail buku berdasarkan ID
 export const getBookByID = (buku_id) => async (dispatch) => {
 	try {
 		const token = localStorage.getItem('token');
@@ -50,7 +48,6 @@ export const getBookByID = (buku_id) => async (dispatch) => {
 		dispatch({ type: GET_BOOK_SUCCESS, payload: response.data });
 	} catch (error) {
 		if (error.response && error.response.status === 404) {
-			// Tangani kasus khusus jika buku tidak ditemukan
 			dispatch({ type: GET_BOOK_FAILURE, payload: 'Buku tidak ditemukan.' });
 		} else {
 			console.error('Error fetching book details:', error);
@@ -58,3 +55,4 @@ export const getBookByID = (buku_id) => async (dispatch) => {
 		}
 	}
 };
+
