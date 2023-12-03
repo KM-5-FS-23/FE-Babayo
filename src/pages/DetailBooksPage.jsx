@@ -17,7 +17,7 @@ function DetailBooksPage() {
 
 	useEffect(() => {
 		if (bookId) {
-			dispatch(getBook(bookId));
+			dispatch(getBook(2));
 		}
 	}, [dispatch, bookId]);
 
