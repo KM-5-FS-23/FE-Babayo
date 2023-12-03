@@ -1,6 +1,8 @@
+// src/pages/DetailBooksPage.jsx
+
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBook } from '../redux/actions/detailBookActions';
+import { getBookByID } from '../redux/actions/detailBookActions';
 import './pages.css';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
@@ -8,25 +10,31 @@ import {
 	Link,
 	NavLink,
 	useParams,
-} from 'react-router-dom/cjs/react-router-dom';
+} from 'react-router-dom/cjs/react-router-dom.min';
 
 function DetailBooksPage() {
-	const { bookId } = useParams();
+	const { buku_id } = useParams();
 	const dispatch = useDispatch();
-	const { book, error } = useSelector((state) => state.detailBook);
+	const { book, loading, error } = useSelector((state) => state.detailBook);
 
 	useEffect(() => {
-		if (bookId) {
-			dispatch(getBook(bookId));
+		if (buku_id) {
+			dispatch(getBookByID(buku_id));
 		}
-	}, [dispatch, bookId]);
+	}, [dispatch, buku_id]);
 
-	if (!bookId || !book) {
+	console.log('Book:', book);
+
+	if (loading) {
 		return <div>Loading...</div>;
 	}
 
 	if (error) {
 		return <div>Error: {error}</div>;
+	}
+
+	if (!book || book.buku_id !== parseInt(buku_id)) {
+		return <div id='loading-data'><span className="loading loading-spinner loading-lg"></span></div>;
 	}
 
 	return (
@@ -35,7 +43,7 @@ function DetailBooksPage() {
 			<div className="flex-col h-screen pt-20">
 				<div className="hero-content justify-start">
 					<Link
-						to="books"
+						to="/books"
 						className="btn btn-secondary"
 					>
 						<svg
