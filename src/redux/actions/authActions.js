@@ -55,7 +55,7 @@ export const login = (userData) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-	alert("Apakah anda yakin untuk logout?")
+	alert('Apakah anda yakin untuk logout?');
 
 	localStorage.removeItem('token');
 	localStorage.removeItem('userId');

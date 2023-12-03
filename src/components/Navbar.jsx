@@ -44,7 +44,7 @@ function Navbar() {
 						className="avatar"
 						style={{ display: 'flex', alignItems: 'center' }}
 					>
-						<span className="menu text-lg capitalize">{username}</span>
+						<span className="menu text-base capitalize">{username}</span>
 						<div className="w-11 rounded-full">
 							<img
 								src="https://i.imgur.com/SqHE1Ct.jpg"
@@ -54,7 +54,7 @@ function Navbar() {
 						</div>
 						<button
 							onClick={handleLogout}
-							className="btn btn-secondary"
+							className="btn btn-sm btn-secondary"
 							style={{ marginLeft: '8px' }}
 						>
 							Logout

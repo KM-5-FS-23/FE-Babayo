@@ -122,3 +122,9 @@
 	margin: 0 auto;
 	font-family: 'Poppins', sans-serif;
 }
+
+#loading-data {
+	width: 100vw !important;
+	height: 100vh !important;
+	margin: 0 auto !important;
+}
