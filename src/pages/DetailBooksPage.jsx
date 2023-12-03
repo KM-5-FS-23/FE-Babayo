@@ -21,18 +21,8 @@ function DetailBooksPage() {
 		}
 	}, [dispatch, buku_id]);
 
-	console.log('Book:', book);
-
-	if (loading) {
-		return <div>Loading...</div>;
-	}
-
-	if (error) {
-		return <div>Error: {error}</div>;
-	}
-
 	if (!book || book.buku_id !== parseInt(buku_id)) {
-		return <div id='loading-data'><span className="loading loading-spinner loading-lg"></span></div>;
+		return <div>Loading...</div>;
 	}
 
 	return (
