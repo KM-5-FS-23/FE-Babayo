@@ -2,11 +2,13 @@ import {
 	REGISTER_SUCCESS,
 	LOGIN_SUCCESS,
 	LOGOUT,
+	USER_INFO_SUCCESS,
 } from '../constant/authConstants';
 
 const initialState = {
 	user: null,
 	isAuthenticated: false,
+	userInfo: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -23,6 +25,11 @@ const authReducer = (state = initialState, action) => {
 				...state,
 				user: null,
 				isAuthenticated: false,
+			};
+		case USER_INFO_SUCCESS:
+			return {
+				...state,
+				userInfo: action.payload,
 			};
 		default:
 			return state;

@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
-import Discuss from '../components/Discuss';
 
 function CreateDailyPage() {
 	return (

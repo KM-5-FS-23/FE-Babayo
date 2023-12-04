@@ -20,6 +20,8 @@ import DiscussPage from '../pages/DiscussPage';
 import CreateDailyPage from '../pages/CreateDailyPage';
 import FavoritBooks from '../pages/FavoritBooks';
 import FavoritDailys from '../pages/FavoritDailys';
+import CreateBookPage from '../pages/CreateBookPage';
+import UpdateBookPage from '../pages/UpdateBookPage';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -78,6 +80,14 @@ const Routes = () => {
 				<PrivateRoute
 					path="/create-daily"
 					component={CreateDailyPage}
+				/>
+				<PrivateRoute
+					path="/create-book"
+					component={CreateBookPage}
+				/>
+				<PrivateRoute
+					path="/update-book/:buku_id"
+					component={UpdateBookPage}
 				/>
 				<PrivateRoute
 					path="/discuss"
