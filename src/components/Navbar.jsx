@@ -9,7 +9,6 @@ function Navbar() {
 	const dispatch = useDispatch();
 
 	const handleLogout = () => {
-		// Panggil fungsi logout saat tombol logout ditekan
 		dispatch(logout());
 	};
 
@@ -40,7 +39,7 @@ function Navbar() {
 			<div className="flex-none mr-3">
 				{isAuthenticated ? (
 					<div className="avatar">
-						<span className="menu text-base capitalize">{username}</span>
+						<span className="menu text-lg capitalize">{username}</span>
 						<div className="w-11 rounded-full">
 							<img
 								src="https://i.imgur.com/SqHE1Ct.jpg"
@@ -57,7 +56,6 @@ function Navbar() {
 						</button>
 					</div>
 				) : (
-					// Tampilkan tautan "Daftar" dan "Masuk" jika belum terautentikasi
 					<ul className="menu menu-horizontal">
 						<li>
 							<Link to="/register">Daftar</Link>
