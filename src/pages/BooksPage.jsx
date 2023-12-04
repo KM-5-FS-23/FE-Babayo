@@ -4,11 +4,13 @@ import { getBook } from '../redux/actions/detailBookActions';
 import Navbar from '../components/navbar';
 import BookCollections from '../components/BookCollections';
 import Footer2 from '../components/Footer2';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 function BooksPage() {
 	const dispatch = useDispatch();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [searchQuery, setSearchQuery] = useState('');
+	const [userRole, setUserRole] = useState('');
 
 	const handlePageChange = (pageNumber) => {
 		setCurrentPage(pageNumber);
@@ -22,6 +24,9 @@ function BooksPage() {
 	};
 
 	useEffect(() => {
+		const fetchedUserRole = localStorage.getItem('role') || '';
+
+		setUserRole(fetchedUserRole);
 		dispatch(getBook(currentPage));
 	}, [currentPage, dispatch]);
 
@@ -82,14 +87,27 @@ function BooksPage() {
 				>
 					<div className="hero bg-base-100">
 						<div className="hero-content w-full flex-col px-10 lg:flex-col align-center">
-							<input
-								type="text"
-								placeholder="Cari Buku"
-								className="input input-bordered w-full"
-								style={{ color: 'black' }}
-								value={searchQuery}
-								onChange={handleSearchChange}
-							/>
+							<div
+								className="flex w-full"
+								style={{ gap: '24px' }}
+							>
+								<input
+									type="text"
+									placeholder="Cari Buku"
+									className="input input-bordered w-full"
+									style={{ color: 'black' }}
+									value={searchQuery}
+									onChange={handleSearchChange}
+								/>
+								{userRole === 'admin' && (
+									<Link
+										to="create-book"
+										className="btn btn-secondary"
+									>
+										Tambah Buku Baru
+									</Link>
+								)}
+							</div>
 
 							<BookCollections currentPage={currentPage} />
 
@@ -97,7 +115,7 @@ function BooksPage() {
 								<button
 									className="join-item btn btn-secondary"
 									onClick={() => handlePageChange(currentPage - 1)}
-									disabled={currentPage === 1} // Menonaktifkan tombol "previous" jika di halaman pertama
+									disabled={currentPage === 1}
 								>
 									«
 								</button>

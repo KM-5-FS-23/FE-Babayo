@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
 import FavoritBookCollections from '../components/FavoritBookCollections';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { getFavoriteBooks } from '../redux/actions/bookActions';
 
 function FavoritBooks() {
+	const dispatch = useDispatch();
+	const { favoriteBooks, loading, error } = useSelector((state) => state.book);
+	const currentUserID = 3;
+
+	useEffect(() => {
+		dispatch(getFavoriteBooks(currentUserID));
+	}, [dispatch, currentUserID]);
+
 	return (
 		<div>
 			<Navbar />
@@ -60,7 +70,11 @@ function FavoritBooks() {
 								style={{ color: 'black' }}
 							/>
 
-							<FavoritBookCollections />
+							<FavoritBookCollections
+								favoriteBooks={favoriteBooks}
+								loading={loading}
+								error={error}
+							/>
 
 							<div className="join">
 								<button className="join-item btn btn-secondary">«</button>

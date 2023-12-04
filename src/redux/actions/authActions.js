@@ -3,6 +3,7 @@ import {
 	REGISTER_SUCCESS,
 	LOGIN_SUCCESS,
 	LOGOUT,
+	USER_INFO_SUCCESS,
 } from '../constant/authConstants';
 
 const API_BASE_URL = 'https://fs23-babayoo.cyclic.app/auth';
@@ -63,4 +64,14 @@ export const logout = () => (dispatch) => {
 	localStorage.removeItem('role');
 
 	dispatch({ type: LOGOUT });
+};
+
+export const getUserInfo = () => async (dispatch) => {
+	try {
+		const response = await api.get(API_BASE_URL);
+		dispatch({ type: USER_INFO_SUCCESS, payload: response.data });
+	} catch (error) {
+		console.error('Get User Info Error:', error);
+		throw error;
+	}
 };

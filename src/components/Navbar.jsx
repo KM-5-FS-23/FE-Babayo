@@ -39,7 +39,6 @@ function Navbar() {
 			</div>
 			<div className="flex-none mr-3">
 				{isAuthenticated ? (
-					// Tampilkan elemen avatar atau nama pengguna
 					<div
 						className="avatar"
 						style={{ display: 'flex', alignItems: 'center' }}
