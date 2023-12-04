@@ -39,10 +39,7 @@ function Navbar() {
 			</div>
 			<div className="flex-none mr-3">
 				{isAuthenticated ? (
-					<div
-						className="avatar"
-						style={{ display: 'flex', alignItems: 'center' }}
-					>
+					<div className="avatar">
 						<span className="menu text-base capitalize">{username}</span>
 						<div className="w-11 rounded-full">
 							<img

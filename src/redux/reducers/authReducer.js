@@ -3,6 +3,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGOUT,
 	USER_INFO_SUCCESS,
+	REAUTHENTICATE_SUCCESS,
 } from '../constant/authConstants';
 
 const initialState = {
@@ -30,6 +31,12 @@ const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				userInfo: action.payload,
+			};
+		case REAUTHENTICATE_SUCCESS:
+			return {
+				...state,
+				user: action.payload,
+				isAuthenticated: true,
 			};
 		default:
 			return state;

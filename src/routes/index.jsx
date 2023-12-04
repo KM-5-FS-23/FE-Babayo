@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	BrowserRouter as Router,
 	Route,
 	Switch,
 	Redirect,
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { reauthenticate } from '../redux/actions/authActions';
 
 import Welcome from '../pages/Welcome';
 import Login from '../pages/Login';
@@ -25,12 +26,21 @@ import UpdateBookPage from '../pages/UpdateBookPage';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(reauthenticate());
+	}, [dispatch]);
 
 	return (
 		<Route
 			{...rest}
 			render={(props) =>
-				isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+				isAuthenticated || localStorage.getItem('token') ? (
+					<Component {...props} />
+				) : (
+					<Redirect to="/login" />
+				)
 			}
 		/>
 	);
