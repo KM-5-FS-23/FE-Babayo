@@ -64,7 +64,7 @@ const Routes = () => {
 					component={DetailBooksPage}
 				/>
 				<PrivateRoute
-					path="/read-book"
+					path="/read-book/:buku_id"
 					component={ReadBookPage}
 				/>
 				<PrivateRoute
