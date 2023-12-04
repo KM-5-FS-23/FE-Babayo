@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getBook } from '../redux/actions/detailBookActions';
 import Navbar from '../components/navbar';
 import BookCollections from '../components/BookCollections';
 import Footer2 from '../components/Footer2';
 
 function BooksPage() {
+	const dispatch = useDispatch();
+	const [currentPage, setCurrentPage] = useState(1);
+	const [searchQuery, setSearchQuery] = useState('');
+
+	const handlePageChange = (pageNumber) => {
+		setCurrentPage(pageNumber);
+	};
+
+	const handleSearchChange = (event) => {
+		const query = event.target.value;
+		setSearchQuery(query);
+
+		dispatch(getBook(currentPage, query));
+	};
+
+	useEffect(() => {
+		dispatch(getBook(currentPage));
+	}, [currentPage, dispatch]);
+
 	return (
 		<div>
 			<Navbar />
@@ -66,13 +87,29 @@ function BooksPage() {
 								placeholder="Cari Buku"
 								className="input input-bordered w-full"
 								style={{ color: 'black' }}
+								value={searchQuery}
+								onChange={handleSearchChange}
 							/>
-							<BookCollections />
+
+							<BookCollections currentPage={currentPage} />
 
 							<div className="join">
-								<button className="join-item btn btn-secondary">«</button>
-								<button className="join-item btn btn-secondary">Page 1</button>
-								<button className="join-item btn btn-secondary">»</button>
+								<button
+									className="join-item btn btn-secondary"
+									onClick={() => handlePageChange(currentPage - 1)}
+									disabled={currentPage === 1} // Menonaktifkan tombol "previous" jika di halaman pertama
+								>
+									«
+								</button>
+								<button className="join-item btn btn-secondary">
+									Page {currentPage}
+								</button>
+								<button
+									className="join-item btn btn-secondary"
+									onClick={() => handlePageChange(currentPage + 1)}
+								>
+									»
+								</button>
 							</div>
 
 							<Footer2 />

@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBookByID } from '../redux/actions/detailBookActions';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 function ReadBookPage() {
+	const { buku_id } = useParams();
+	const dispatch = useDispatch();
+	const { book } = useSelector((state) => state.detailBook);
+
+	useEffect(() => {
+		if (buku_id) {
+			dispatch(getBookByID(buku_id));
+		}
+	}, [dispatch, buku_id]);
+
+	if (!book || book.buku_id !== parseInt(buku_id)) {
+		return <div>Loading...</div>;
+	}
+
 	return (
 		<div>
 			<Navbar />
@@ -14,8 +30,8 @@ function ReadBookPage() {
 			>
 				<div className="flex justify-between">
 					<div className="flex-col font-semibold">
-						<h1>Laskar Pelangi</h1>
-						<p>2005</p>
+						<h1>{book.judul}</h1>
+						<p>{book.tahun_terbit}</p>
 					</div>
 					<div className="flex-col text-right font-semibold">
 						<h1>Waktu Membaca</h1>
@@ -23,12 +39,13 @@ function ReadBookPage() {
 					</div>
 				</div>
 				<iframe
-					src="https://drive.google.com/file/d/1nA62-2cS1Hp_GmYSiF1Jl6y-QpjuLUvE/preview"
+					src={book.iframe}
 					className="w-full aspect-video py-6"
+					title="Book IFrame"
 				></iframe>
 				<div className="flex justify-center">
 					<Link
-						to="/detail-books"
+						to={`/detail-books/${book.buku_id}`}
 						className="btn btn-secondary"
 					>
 						Selesai Membaca

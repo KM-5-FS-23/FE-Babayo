@@ -13,7 +13,7 @@ import {
 function DetailBooksPage() {
 	const { buku_id } = useParams();
 	const dispatch = useDispatch();
-	const { book, loading, error } = useSelector((state) => state.detailBook);
+	const { book } = useSelector((state) => state.detailBook);
 
 	useEffect(() => {
 		if (buku_id) {
@@ -65,7 +65,7 @@ function DetailBooksPage() {
 								alt={book.judul}
 							/>
 							<NavLink
-								to="read-book"
+								to={`/read-book/${book.buku_id}`}
 								className="btn btn-secondary w-full my-2"
 							>
 								Baca Buku

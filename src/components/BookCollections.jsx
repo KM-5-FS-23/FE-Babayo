@@ -1,18 +1,15 @@
-// src/components/BookCollections.js
-
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBook } from '../redux/actions/detailBookActions';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
-function BookCollections() {
+function BookCollections({ currentPage, searchQuery }) {
 	const dispatch = useDispatch();
-	const book = useSelector((state) => state.detailBook.book);
-	const loading = useSelector((state) => state.detailBook.loading);
+	const { book, loading } = useSelector((state) => state.detailBook);
 
 	useEffect(() => {
-		dispatch(getBook());
-	}, [dispatch]);
+		dispatch(getBook(currentPage, searchQuery));
+	}, [currentPage, searchQuery, dispatch]);
 
 	if (loading) {
 		return <p>Loading...</p>;
@@ -22,26 +19,32 @@ function BookCollections() {
 		return <p>No books available.</p>;
 	}
 
+	const itemsPerPage = 10;
+	const startIndex = (currentPage - 1) * itemsPerPage;
+	const endIndex = startIndex + itemsPerPage;
+	const currentBooks = book.slice(startIndex, endIndex);
+
 	return (
 		<div id="cardBooks">
-			{book.map((book) => (
+			{currentBooks.map((bookItem) => (
 				<div
-					key={book.buku_id}
+					key={bookItem.buku_id}
 					className="card card-compact bg-base-100"
 					style={{ width: '152px' }}
 				>
 					<figure className="img-book">
-						<Link to={`/detail-books/${book.buku_id}`}>
+						<Link to={`/detail-books/${bookItem.buku_id}`}>
 							<img
-								src={book.gambar}
-								alt={book.judul}
+								src={bookItem.gambar}
+								alt={bookItem.judul}
+								style={{ width: '100%', height: '187px', objectFit: 'cover' }}
 							/>
 						</Link>
 					</figure>
 					<div className="card-body-0">
-						<h2 className="card-title">{book.judul}</h2>
+						<h2 className="card-title text-base">{bookItem.judul}</h2>
 						<p>
-							by <a href="">{book.penulis}</a>
+							by <a href="">{bookItem.penulis}</a>
 						</p>
 					</div>
 				</div>

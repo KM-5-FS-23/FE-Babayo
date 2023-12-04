@@ -1,13 +1,16 @@
 import axios from 'axios';
 import {
-  GET_BOOK_SUCCESS,
-  GET_BOOK_FAILURE,
+	GET_BOOK_SUCCESS,
+	GET_BOOK_FAILURE,
+	CHANGE_PAGE,
 } from '../constant/detailBookConstants';
 
 const API_BASE_URL = 'https://fs23-babayoo.cyclic.app/books';
 
-export const getBook = () => async (dispatch) => {
+export const getBook = (page, searchQuery) => async (dispatch) => {
 	try {
+		dispatch({ type: CHANGE_PAGE, payload: page });
+
 		const token = localStorage.getItem('token');
 
 		if (!token) {
@@ -17,6 +20,11 @@ export const getBook = () => async (dispatch) => {
 		const config = {
 			headers: {
 				Authorization: `Bearer ${token}`,
+			},
+			params: {
+				page,
+				limit: 10,
+				search: searchQuery,
 			},
 		};
 
@@ -45,14 +53,12 @@ export const getBookByID = (buku_id) => async (dispatch) => {
 
 		const response = await axios.get(`${API_BASE_URL}/${buku_id}`, config);
 
+		console.log('Config:', config);
+		console.log(response);
+
 		dispatch({ type: GET_BOOK_SUCCESS, payload: response.data });
 	} catch (error) {
-		if (error.response && error.response.status === 404) {
-			dispatch({ type: GET_BOOK_FAILURE, payload: 'Buku tidak ditemukan.' });
-		} else {
-			console.error('Error fetching book details:', error);
-			dispatch({ type: GET_BOOK_FAILURE, payload: error.message });
-		}
+		console.error('Error fetching book details:', error);
+		dispatch({ type: GET_BOOK_FAILURE, payload: error.message });
 	}
 };
-
