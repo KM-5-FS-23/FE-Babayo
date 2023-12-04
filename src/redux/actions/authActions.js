@@ -4,6 +4,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGOUT,
 	USER_INFO_SUCCESS,
+	REAUTHENTICATE_SUCCESS,
 } from '../constant/authConstants';
 
 const API_BASE_URL = 'https://fs23-babayoo.cyclic.app/auth';
@@ -56,14 +57,15 @@ export const login = (userData) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-	alert('Apakah anda yakin untuk logout?');
+	const confirmLogout = window.confirm('Apakah anda yakin untuk logout?');
+	if (confirmLogout) {
+		localStorage.removeItem('token');
+		localStorage.removeItem('userId');
+		localStorage.removeItem('username');
+		localStorage.removeItem('role');
 
-	localStorage.removeItem('token');
-	localStorage.removeItem('userId');
-	localStorage.removeItem('username');
-	localStorage.removeItem('role');
-
-	dispatch({ type: LOGOUT });
+		dispatch({ type: LOGOUT });
+	}
 };
 
 export const getUserInfo = () => async (dispatch) => {
@@ -73,5 +75,14 @@ export const getUserInfo = () => async (dispatch) => {
 	} catch (error) {
 		console.error('Get User Info Error:', error);
 		throw error;
+	}
+};
+
+export const reauthenticate = () => async (dispatch) => {
+	try {
+		const response = await api.get(API_BASE_URL);
+		dispatch({ type: REAUTHENTICATE_SUCCESS, payload: response.data });
+	} catch (error) {
+		console.error('Reauthentication Error:', error);
 	}
 };
