@@ -4,6 +4,7 @@ import detailBookReducer from './reducers/detailBookReducer';
 import bookReducer from './reducers/bookReducer';
 import detailDailyReducer from './reducers/detailDailyReducer';
 import dailyReducer from './reducers/dailyReducer';
+import detailCommentReducer from './reducers/detailCommentReducer';
 
 const rootReducer = combineReducers({
 	auth: authReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
 	book: bookReducer,
 	detailDaily: detailDailyReducer,
 	daily: dailyReducer,
+	comments: detailCommentReducer,
 });
 
 export default rootReducer;

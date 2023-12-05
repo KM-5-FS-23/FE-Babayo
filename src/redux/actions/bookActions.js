@@ -6,6 +6,9 @@ import {
 	GET_FAVORITE_BOOKS_REQUEST,
 	GET_FAVORITE_BOOKS_SUCCESS,
 	GET_FAVORITE_BOOKS_FAILURE,
+    DELETE_FAVORITE_BOOK_REQUEST,
+	DELETE_FAVORITE_BOOK_SUCCESS,
+	DELETE_FAVORITE_BOOK_FAILURE,
 	ADD_BOOK_REQUEST,
 	ADD_BOOK_SUCCESS,
 	ADD_BOOK_FAILURE,
@@ -110,6 +113,51 @@ export const getFavoriteBooks = (page, searchQuery) => {
 		} catch (error) {
 			console.error('Error fetching favorite books:', error);
 			dispatch(getFavoriteBooksFailure(error.message));
+		}
+	};
+};
+
+export const deleteFavoriteBookRequest = () => ({
+	type: DELETE_FAVORITE_BOOK_REQUEST,
+});
+
+export const deleteFavoriteBookSuccess = (bookId) => ({
+	type: DELETE_FAVORITE_BOOK_SUCCESS,
+	payload: bookId,
+});
+
+export const deleteFavoriteBookFailure = (error) => ({
+	type: DELETE_FAVORITE_BOOK_FAILURE,
+	payload: { error },
+});
+
+export const deleteFavoriteBook = (favBookId) => {
+	return async (dispatch) => {
+		dispatch(deleteFavoriteBookRequest());
+
+		try {
+			const token = localStorage.getItem('token');
+
+			if (!token) {
+				throw new Error('Token tidak ada!');
+			}
+
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+
+			const response = await axios.delete(`${API_BASE_URL}/${favBookId}`, config);
+
+			if (!response.data) {
+				throw new Error('Gagal menghapus buku');
+			}
+
+			dispatch(deleteFavoriteBookSuccess(favBookId));
+			alert('Buku berhasil dihapus!');
+		} catch (error) {
+			dispatch(deleteFavoriteBookFailure(error.message));
 		}
 	};
 };

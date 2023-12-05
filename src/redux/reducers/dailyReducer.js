@@ -5,6 +5,9 @@ import {
 	GET_FAVORITE_DAILYS_REQUEST,
 	GET_FAVORITE_DAILYS_SUCCESS,
 	GET_FAVORITE_DAILYS_FAILURE,
+	DELETE_FAVORITE_DAILY_REQUEST,
+	DELETE_FAVORITE_DAILY_SUCCESS,
+	DELETE_FAVORITE_DAILY_FAILURE,
 	ADD_DAILY_REQUEST,
 	ADD_DAILY_SUCCESS,
 	ADD_DAILY_FAILURE,
@@ -39,7 +42,10 @@ const dailyReducer = (state = initialState, action) => {
 				...state,
 				favoriteDailys: [
 					...state.favoriteDailys,
-					{ bacaan_id: action.payload.bacaan_id, userId: action.payload.userId },
+					{
+						bacaan_id: action.payload.bacaan_id,
+						userId: action.payload.userId,
+					},
 				],
 				loading: false,
 				error: null,
@@ -68,6 +74,28 @@ const dailyReducer = (state = initialState, action) => {
 				...state,
 				loading: false,
 				error: action.payload,
+			};
+		case DELETE_FAVORITE_DAILY_REQUEST:
+			return {
+				...state,
+				loading: true,
+				error: null,
+			};
+		case DELETE_FAVORITE_DAILY_SUCCESS:
+			const updatedDeletedFavoriteDailys = state.dailys.filter(
+				(favoriteDailys) => favoriteDailys.id !== action.payload
+			);
+			return {
+				...state,
+				favoriteDailys: updatedDeletedFavoriteDailys,
+				loading: false,
+				error: null,
+			};
+		case DELETE_FAVORITE_DAILY_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload.error,
 			};
 		case ADD_DAILY_REQUEST:
 			return {
