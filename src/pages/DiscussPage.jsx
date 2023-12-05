@@ -9,7 +9,7 @@ import {
 	faThumbsDown,
 	faReply,
 } from '@fortawesome/free-solid-svg-icons';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import Footer2 from '../components/Footer2';
 import Discuss from '../components/Discuss';
 import { Link, useParams } from 'react-router-dom';

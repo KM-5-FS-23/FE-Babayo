@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBookByID } from '../redux/actions/detailBookActions';
 import { addFavoriteBook } from '../redux/actions/bookActions';
 import './pages.css';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import Footer2 from '../components/Footer2';
 import {
 	Link,

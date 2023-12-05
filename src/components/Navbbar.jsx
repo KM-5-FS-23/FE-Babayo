@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { logout } from '../redux/actions/authActions';
 
-function navbar() {
+function Navbar() {
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 	const username = useSelector((state) => state.auth.user?.username);
 	const dispatch = useDispatch();
@@ -75,4 +75,4 @@ function navbar() {
 	);
 }
 
-export default navbar;
+export default Navbar;

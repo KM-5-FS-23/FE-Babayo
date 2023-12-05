@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import Footer2 from '../components/Footer2';
 import { addDaily } from '../redux/actions/dailyActions';
 import { useHistory } from 'react-router-dom';
@@ -23,7 +23,7 @@ function CreateDailyPage() {
 	const handleAddDaily = (e) => {
 		e.preventDefault();
 		dispatch(addDaily(dailyData));
-		history.push('/dailys')
+		history.push('/dailys');
 	};
 
 	return (

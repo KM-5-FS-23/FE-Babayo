@@ -1,10 +1,10 @@
 import React from 'react';
 import './pages.css';
-import Navbar from '../components/navbar';
 import Footer from '../components/Footer';
 import Books from '../components/Books';
 import Products from '../components/Products';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import Navbar from '../components/Navbbar';
 
 function Welcome() {
 	return (

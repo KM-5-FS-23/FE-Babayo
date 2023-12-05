@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import Footer2 from '../components/Footer2';
-import { updateBook } from '../redux/actions/bookActions'; 
+import { updateBook } from '../redux/actions/bookActions';
 import { getBookByID } from '../redux/actions/detailBookActions';
 
 function UpdateBookPage({ match }) {

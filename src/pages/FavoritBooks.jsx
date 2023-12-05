@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import Footer2 from '../components/Footer2';
 import FavoritBookCollections from '../components/FavoritBookCollections';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';

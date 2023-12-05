@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import Footer2 from '../components/Footer2';
 import { addBook } from '../redux/actions/bookActions';
 import { useHistory } from 'react-router-dom';
@@ -27,7 +27,7 @@ function CreateBookPage() {
 	const handleAddBook = (e) => {
 		e.preventDefault();
 		dispatch(addBook(bookData));
-		history.push('/books')
+		history.push('/books');
 	};
 
 	return (

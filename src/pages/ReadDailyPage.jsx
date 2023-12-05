@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDailyByID } from '../redux/actions/detailDailyActions';
 import { addFavoriteDaily } from '../redux/actions/dailyActions';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import Footer2 from '../components/Footer2';
 import { Link, useParams } from 'react-router-dom';
 

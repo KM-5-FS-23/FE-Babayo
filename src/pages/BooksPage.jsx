@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBook } from '../redux/actions/detailBookActions';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import BookCollections from '../components/BookCollections';
 import Footer2 from '../components/Footer2';
 import { Link } from 'react-router-dom/cjs/react-router-dom';

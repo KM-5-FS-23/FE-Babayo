@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Footer2 from '../components/Footer2';
 import DailyCollections from '../components/DailyCollections';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbbar';
 import { getDaily } from '../redux/actions/detailDailyActions';
 
 function DailysPage() {
