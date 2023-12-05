@@ -9,7 +9,6 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer(),
-        // your other PostCSS plugins here
       ],
     },
   },
