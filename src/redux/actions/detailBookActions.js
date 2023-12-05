@@ -39,22 +39,11 @@ export const getBook = (page, searchQuery) => async (dispatch) => {
 
 export const getRecBook = () => async (dispatch) => {
 	try {
-		const token = localStorage.getItem('token');
-
-		if (!token) {
-			throw new Error('Token tidak ada!');
-		}
-
-		const config = {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-			params: {
-				limit: 5,
-			},
+		const params = {
+			limit: 5,
 		};
 
-		const response = await axios.get(API_BASE_URL, config);
+		const response = await axios.get(API_BASE_URL, params);
 
 		dispatch({ type: GET_BOOK_SUCCESS, payload: response.data });
 	} catch (error) {
