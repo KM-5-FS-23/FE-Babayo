@@ -11,7 +11,7 @@ function BookCollections({ currentPage, searchQuery }) {
 	const history = useHistory();
 	const { book, loading } = useSelector((state) => state.detailBook);
 	const userRole = localStorage.getItem('role') || '';
-	const [books, setBooks] = useState([]); // Tambahkan state lokal books
+	const [books, setBooks] = useState([]);
 
 	useEffect(() => {
 		dispatch(getBook(currentPage, searchQuery));

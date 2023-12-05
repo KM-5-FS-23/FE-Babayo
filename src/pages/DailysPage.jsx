@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Footer2 from '../components/Footer2';
 import DailyCollections from '../components/DailyCollections';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Navbar from '../components/navbar';
+import { getDaily } from '../redux/actions/detailDailyActions';
 
 function DailysPage() {
+	const dispatch = useDispatch();
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const handlePageChange = (pageNumber) => {
+		setCurrentPage(pageNumber);
+	};
+
+	useEffect(() => {
+		dispatch(getDaily(currentPage));
+	}, [currentPage, dispatch]);
+
 	return (
 		<div>
 			<Navbar />
@@ -73,12 +86,25 @@ function DailysPage() {
 									Buat Topik Baru
 								</Link>
 							</div>
-							<DailyCollections />
+							<DailyCollections currentPage={currentPage} />
 
 							<div className="join">
-								<button className="join-item btn btn-secondary">«</button>
-								<button className="join-item btn btn-secondary">Page 1</button>
-								<button className="join-item btn btn-secondary">»</button>
+								<button
+									className="join-item btn btn-secondary"
+									onClick={() => handlePageChange(currentPage - 1)}
+									disabled={currentPage === 1}
+								>
+									«
+								</button>
+								<button className="join-item btn btn-secondary">
+									Page {currentPage}
+								</button>
+								<button
+									className="join-item btn btn-secondary"
+									onClick={() => handlePageChange(currentPage + 1)}
+								>
+									»
+								</button>
 							</div>
 
 							<Footer2 />

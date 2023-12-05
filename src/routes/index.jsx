@@ -84,7 +84,7 @@ const Routes = () => {
 					component={DailysPage}
 				/>
 				<PrivateRoute
-					path="/read-daily"
+					path="/read-daily/:bacaan_id"
 					component={ReadDailyPage}
 				/>
 				<PrivateRoute

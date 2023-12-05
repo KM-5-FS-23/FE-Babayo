@@ -38,7 +38,7 @@ function DetailBooksPage() {
 	}
 
 	if (!book || book.buku_id !== parseInt(buku_id)) {
-		return <div>Loading...</div>; // Gantilah sesuai kebutuhan Anda
+		return <div>Loading...</div>;
 	}
 
 	return (
@@ -79,6 +79,7 @@ function DetailBooksPage() {
 								src={book.gambar}
 								className="card card-compact w-72"
 								alt={book.judul}
+								style={{ width: '100%', height: '300px' }}
 							/>
 							<NavLink
 								to={`/read-book/${book.buku_id}`}
