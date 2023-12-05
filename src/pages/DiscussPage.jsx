@@ -1,12 +1,31 @@
-import React from 'react';
+// DiscussPage.jsx
+
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import {
+	faPaperPlane,
+	faThumbsUp,
+	faThumbsDown,
+	faReply,
+} from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Discuss from '../components/Discuss';
+import { Link, useParams } from 'react-router-dom';
+import { getComments } from '../redux/actions/detailCommentActions';
 
 function DiscussPage() {
+	const { bacaan_id } = useParams();
+	const dispatch = useDispatch();
+	const { comments, loading, error } = useSelector(
+		(state) => state.detailComment
+	);
+
+	useEffect(() => {
+		dispatch(getComments(bacaan_id));
+	}, [dispatch, bacaan_id]);
+
 	return (
 		<div>
 			<Navbar />
@@ -19,7 +38,11 @@ function DiscussPage() {
 					Rendahnya Minat Baca Berpengaruh terhadap Kualitas Bangsa
 				</h1>
 
-				<Discuss />
+				<Discuss
+					comments={comments}
+					loading={loading}
+					error={error}
+				/>
 
 				<form action="">
 					<div
@@ -32,7 +55,10 @@ function DiscussPage() {
 							className="input input-bordered w-full min-w-xs"
 						/>
 						<button>
-							<FontAwesomeIcon icon={faPaperPlane} size='xl' />
+							<FontAwesomeIcon
+								icon={faPaperPlane}
+								size="xl"
+							/>
 						</button>
 					</div>
 				</form>

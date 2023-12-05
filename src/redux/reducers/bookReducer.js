@@ -5,6 +5,9 @@ import {
 	GET_FAVORITE_BOOKS_REQUEST,
 	GET_FAVORITE_BOOKS_SUCCESS,
 	GET_FAVORITE_BOOKS_FAILURE,
+	DELETE_FAVORITE_BOOK_REQUEST,
+	DELETE_FAVORITE_BOOK_SUCCESS,
+	DELETE_FAVORITE_BOOK_FAILURE,
 	ADD_BOOK_REQUEST,
 	ADD_BOOK_SUCCESS,
 	ADD_BOOK_FAILURE,
@@ -68,6 +71,28 @@ const bookReducer = (state = initialState, action) => {
 				...state,
 				loading: false,
 				error: action.payload,
+			};
+		case DELETE_FAVORITE_BOOK_REQUEST:
+			return {
+				...state,
+				loading: true,
+				error: null,
+			};
+		case DELETE_FAVORITE_BOOK_SUCCESS:
+			const updatedDeletedFavoriteBooks = state.books.filter(
+				(favoriteBooks) => favoriteBooks.id !== action.payload
+			);
+			return {
+				...state,
+				favoriteBooks: updatedDeletedFavoriteBooks,
+				loading: false,
+				error: null,
+			};
+		case DELETE_FAVORITE_BOOK_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload.error,
 			};
 		case ADD_BOOK_REQUEST:
 			return {

@@ -1,10 +1,11 @@
+// Import yang diperlukan
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDailyByID } from '../redux/actions/detailDailyActions';
 import { addFavoriteDaily } from '../redux/actions/dailyActions';
 import Navbar from '../components/navbar';
 import Footer2 from '../components/Footer2';
-import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useParams } from 'react-router-dom';
 
 function ReadDailyPage() {
 	const { bacaan_id } = useParams();
@@ -38,13 +39,8 @@ function ReadDailyPage() {
 				className="flex-col h-screen pt-20"
 				id="read-content"
 			>
-				<div className="flex justify-between">
-					<h1 className="font-semibold">{daily.judul}</h1>
-
-					<div className="flex-col text-right font-semibold">
-						<h1>Waktu Membaca</h1>
-						<p>00:00:00</p>
-					</div>
+				<div className="flex justify-center">
+					<h1 className="font-semibold text-xl">{daily.judul}</h1>
 				</div>
 
 				<div className="flex w-full my-12">
@@ -68,7 +64,7 @@ function ReadDailyPage() {
 						Selesai Membaca
 					</Link>
 					<Link
-						to="/discuss"
+						to={`/discuss/${bacaan_id}`}
 						className="btn btn-primary"
 					>
 						Lanjut Diskusi

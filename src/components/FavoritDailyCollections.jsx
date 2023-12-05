@@ -1,160 +1,59 @@
 import React from 'react';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { deleteFavoriteDaily } from '../redux/actions/dailyActions';
 
-function FavoritDailyCollections() {
+function FavoritDailyCollections({ favoriteDailys }) {
+	const dispatch = useDispatch();
+	const history = useHistory();
+
+	const confirmDelete = (fav_bacaan_harian_id) => {
+		const isConfirmed = window.confirm(
+			'Apakah Anda yakin ingin menghapus bacaan ini?'
+		);
+		if (isConfirmed) {
+			dispatch(deleteFavoriteDaily(fav_bacaan_harian_id));
+			history.push('/favorite-dailys');
+		}
+	};
+
 	return (
 		<div>
 			<div id="dailyTables">
-				<div className="overflow-x-auto">
+				<div className="">
 					<table className="table">
 						<thead>
 							<tr>
-								<th></th>
 								<th>Judul</th>
-								<th>Penulis</th>
-								<th>Kategori</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<tr>
-								<th>1</th>
-								<td>
-									Rendahnya Minat Baca Berpengaruh terhadap Kualitas Bangsa
-								</td>
-								<td>Willy</td>
-								<td>Artikel</td>
-								<td
-									className="flex"
-									style={{ gap: '1em' }}
-								>
-									<button className="btn btn-outline btn-error">
-										<FontAwesomeIcon icon={faTrash} />
-									</button>
-									<button className="btn btn-outline btn-success">Buka</button>
-								</td>
-							</tr>
-
-							<tr>
-								<th>2</th>
-								<td>8 Cara Menyenangkan agar Anak Gemar Membaca Buku</td>
-								<td>Munir Yusuf</td>
-								<td>Artikel</td>
-								<td
-									className="flex"
-									style={{ gap: '1em' }}
-								>
-									<button className="btn btn-outline btn-error">
-										<FontAwesomeIcon icon={faTrash} />
-									</button>
-									<button className="btn btn-outline btn-success">Buka</button>
-								</td>
-							</tr>
-
-							<tr>
-								<th>3</th>
-								<td>Pentingnya Peningkatan Literasi Pada Mahasiswa</td>
-								<td>Binuko Amarseto</td>
-								<td>Artikel</td>
-								<td
-									className="flex"
-									style={{ gap: '1em' }}
-								>
-									<button className="btn btn-outline btn-error">
-										<FontAwesomeIcon icon={faTrash} />
-									</button>
-									<button className="btn btn-outline btn-success">Buka</button>
-								</td>
-							</tr>
-							<tr>
-								<th>4</th>
-								<td>
-									Cerita Awal Mula Penulis Novel “Layangan Putus” Tulisannya
-									Viral
-								</td>
-								<td>Ahmad Fuadi</td>
-								<td>Artikel</td>
-								<td
-									className="flex"
-									style={{ gap: '1em' }}
-								>
-									<button className="btn btn-outline btn-error">
-										<FontAwesomeIcon icon={faTrash} />
-									</button>
-									<button className="btn btn-outline btn-success">Buka</button>
-								</td>
-							</tr>
-
-							<tr>
-								<th>5</th>
-								<td>
-									Rendahnya Minat Baca Berpengaruh terhadap Kualitas Bangsa
-								</td>
-								<td>Willy</td>
-								<td>Artikel</td>
-								<td
-									className="flex"
-									style={{ gap: '1em' }}
-								>
-									<button className="btn btn-outline btn-error">
-										<FontAwesomeIcon icon={faTrash} />
-									</button>
-									<button className="btn btn-outline btn-success">Buka</button>
-								</td>
-							</tr>
-
-							<tr>
-								<th>6</th>
-								<td>8 Cara Menyenangkan agar Anak Gemar Membaca Buku</td>
-								<td>Munir Yusuf</td>
-								<td>Artikel</td>
-								<td
-									className="flex"
-									style={{ gap: '1em' }}
-								>
-									<button className="btn btn-outline btn-error">
-										<FontAwesomeIcon icon={faTrash} />
-									</button>
-									<button className="btn btn-outline btn-success">Buka</button>
-								</td>
-							</tr>
-
-							<tr>
-								<th>7</th>
-								<td>Pentingnya Peningkatan Literasi Pada Mahasiswa</td>
-								<td>Binuko Amarseto</td>
-								<td>Artikel</td>
-								<td
-									className="flex"
-									style={{ gap: '1em' }}
-								>
-									<button className="btn btn-outline btn-error">
-										<FontAwesomeIcon icon={faTrash} />
-									</button>
-									<button className="btn btn-outline btn-success">Buka</button>
-								</td>
-							</tr>
-							<tr>
-								<th>8</th>
-								<td>
-									Cerita Awal Mula Penulis Novel “Layangan Putus” Tulisannya
-									Viral
-								</td>
-								<td>Ahmad Fuadi</td>
-								<td>Artikel</td>
-								<td
-									className="flex"
-									style={{ gap: '1em' }}
-								>
-									<button className="btn btn-outline btn-error">
-										<FontAwesomeIcon icon={faTrash} />
-									</button>
-									<button className="btn btn-outline btn-success">Buka</button>
-								</td>
-							</tr>
+							{favoriteDailys.map((dailyItem) => (
+								<tr key={dailyItem.fav_bacaan_harian_id}>
+									<td>{dailyItem.favoritedBacaanHarian?.judul}</td>
+									<td
+										className="flex"
+										style={{ gap: '1em' }}
+									>
+										<button
+											className="btn btn-outline btn-error"
+											onClick={() =>
+												confirmDelete(dailyItem.fav_bacaan_harian_id)
+											}
+										>
+											<FontAwesomeIcon icon={faTrash} />
+										</button>
+										<Link
+											className="btn btn-outline btn-success"
+											to={`/read-daily/${dailyItem.bacaan_id}`}
+										>Buka</Link>
+									</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</div>

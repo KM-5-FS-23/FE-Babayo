@@ -98,26 +98,28 @@ function DetailBooksPage() {
 						<div className="flex-col w-full">
 							<h1 className="text-3xl font-bold">{book.judul}</h1>
 							<table className="my-3">
-								<tr>
-									<td className="w-32">Bahasa</td>
-									<td className="w-4">:</td>
-									<td>{book.bahasa}</td>
-								</tr>
-								<tr>
-									<td className="w-32">Penulis</td>
-									<td className="w-4">:</td>
-									<td>{book.penulis}</td>
-								</tr>
-								<tr>
-									<td className="w-32">Tahun Terbit</td>
-									<td className="w-4">:</td>
-									<td>{book.tahun_terbit}</td>
-								</tr>
-								<tr>
-									<td className="w-32">Kategori</td>
-									<td className="w-4">:</td>
-									<td>{book.kategori}</td>
-								</tr>
+								<tbody>
+									<tr>
+										<td className="w-32">Bahasa</td>
+										<td className="w-4">:</td>
+										<td>{book.bahasa}</td>
+									</tr>
+									<tr>
+										<td className="w-32">Penulis</td>
+										<td className="w-4">:</td>
+										<td>{book.penulis}</td>
+									</tr>
+									<tr>
+										<td className="w-32">Tahun Terbit</td>
+										<td className="w-4">:</td>
+										<td>{book.tahun_terbit}</td>
+									</tr>
+									<tr>
+										<td className="w-32">Kategori</td>
+										<td className="w-4">:</td>
+										<td>{book.kategori}</td>
+									</tr>
+								</tbody>
 							</table>
 
 							<h1 className="text-3xl font-bold">Sinopsis</h1>

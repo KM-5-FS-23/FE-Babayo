@@ -6,6 +6,9 @@ import {
 	GET_FAVORITE_DAILYS_REQUEST,
 	GET_FAVORITE_DAILYS_SUCCESS,
 	GET_FAVORITE_DAILYS_FAILURE,
+	DELETE_FAVORITE_DAILY_REQUEST,
+	DELETE_FAVORITE_DAILY_SUCCESS,
+	DELETE_FAVORITE_DAILY_FAILURE,
 	ADD_DAILY_REQUEST,
 	ADD_DAILY_SUCCESS,
 	ADD_DAILY_FAILURE,
@@ -110,6 +113,54 @@ export const getFavoriteDailys = (page, searchQuery) => {
 		} catch (error) {
 			console.error('Error fetching favorite dailys:', error);
 			dispatch(getFavoriteDailysFailure(error.message));
+		}
+	};
+};
+
+export const deleteFavoriteDailyRequest = () => ({
+	type: DELETE_FAVORITE_DAILY_REQUEST,
+});
+
+export const deleteFavoriteDailySuccess = (bacaan_id) => ({
+	type: DELETE_FAVORITE_DAILY_SUCCESS,
+	payload: bacaan_id,
+});
+
+export const deleteFavoriteDailyFailure = (error) => ({
+	type: DELETE_FAVORITE_DAILY_FAILURE,
+	payload: { error },
+});
+
+export const deleteFavoriteDaily = (favDailyId) => {
+	return async (dispatch) => {
+		dispatch(deleteFavoriteDailyRequest());
+
+		try {
+			const token = localStorage.getItem('token');
+
+			if (!token) {
+				throw new Error('Token tidak ada!');
+			}
+
+			const config = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+
+			const response = await axios.delete(
+				`${API_BASE_URL}/${favDailyId}`,
+				config
+			);
+
+			if (!response.data) {
+				throw new Error('Gagal menghapus bacaan');
+			}
+
+			dispatch(deleteFavoriteDailySuccess(favDailyId));
+			alert('Bacaan berhasil dihapus!');
+		} catch (error) {
+			dispatch(deleteFavoriteDailyFailure(error.message));
 		}
 	};
 };
@@ -233,7 +284,10 @@ export const deleteDaily = (dailyId) => {
 				},
 			};
 
-			const response = await axios.delete(`${API_DAILY_URL}/${dailyId}`, config);
+			const response = await axios.delete(
+				`${API_DAILY_URL}/${dailyId}`,
+				config
+			);
 
 			if (!response.data) {
 				throw new Error('Gagal menghapus bacaan');

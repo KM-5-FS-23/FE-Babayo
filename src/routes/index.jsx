@@ -100,7 +100,7 @@ const Routes = () => {
 					component={UpdateBookPage}
 				/>
 				<PrivateRoute
-					path="/discuss"
+					path="/discuss:bacaan_id"
 					component={DiscussPage}
 				/>
 				<PrivateRoute

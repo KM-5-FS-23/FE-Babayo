@@ -76,12 +76,6 @@ function FavoritBooks() {
 								error={error}
 							/>
 
-							<div className="join">
-								<button className="join-item btn btn-secondary">«</button>
-								<button className="join-item btn btn-secondary">Page 1</button>
-								<button className="join-item btn btn-secondary">»</button>
-							</div>
-
 							<Footer2 />
 						</div>
 					</div>

@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/navbar';
-import FavoritBookCollections from '../components/FavoritBookCollections';
 import Footer2 from '../components/Footer2';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import FavoritDailyCollections from '../components/FavoritDailyCollections';
+import { getFavoriteDailys } from '../redux/actions/dailyActions';
 
 function FavoritDailys() {
+	const dispatch = useDispatch();
+	const { favoriteDailys, loading, error } = useSelector(
+		(state) => state.daily
+	);
+	const currentUserID = 3;
+
+	useEffect(() => {
+		dispatch(getFavoriteDailys(currentUserID));
+	}, [dispatch, currentUserID]);
+
 	return (
 		<div>
 			<Navbar />
@@ -61,13 +72,11 @@ function FavoritDailys() {
 								style={{ color: 'black' }}
 							/>
 
-							<FavoritDailyCollections />
-
-							<div className="join">
-								<button className="join-item btn btn-secondary">«</button>
-								<button className="join-item btn btn-secondary">Page 1</button>
-								<button className="join-item btn btn-secondary">»</button>
-							</div>
+							<FavoritDailyCollections
+								favoriteDailys={favoriteDailys}
+								loading={loading}
+								error={error}
+							/>
 
 							<Footer2 />
 						</div>

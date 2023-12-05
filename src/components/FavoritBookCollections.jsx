@@ -1,9 +1,24 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { deleteFavoriteBook } from '../redux/actions/bookActions';
 
 function FavoritBookCollections({ favoriteBooks }) {
+	const dispatch = useDispatch();
+	const history = useHistory();
+
+	const confirmDelete = (fav_buku_id) => {
+		const isConfirmed = window.confirm(
+			'Apakah Anda yakin ingin menghapus buku ini?'
+		);
+		if (isConfirmed) {
+			dispatch(deleteFavoriteBook(fav_buku_id));
+			history.push('/favorite-books');
+		}
+	};
+
 	return (
 		<div>
 			<div id="cardBooks">
@@ -29,7 +44,10 @@ function FavoritBookCollections({ favoriteBooks }) {
 							<p>
 								by <a href="">{bookItem.koleksiBuku?.penulis}</a>
 							</p>
-							<button className="btn btn-outline btn-error w-full">
+							<button
+								className="btn btn-outline btn-error w-full"
+								onClick={() => confirmDelete(bookItem.fav_buku_id)}
+							>
 								<FontAwesomeIcon icon={faTrash} />
 							</button>
 						</div>
