@@ -15,9 +15,7 @@ function DetailBooksPage() {
 	const { buku_id } = useParams();
 	const dispatch = useDispatch();
 	const { book, loading, error } = useSelector((state) => state.detailBook);
-	const { user } = useSelector((state) => state.auth);
-
-	const userId = user?.userId;
+	const userId = localStorage.getItem('userId');
 
 	useEffect(() => {
 		if (buku_id) {
